@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Карусель на JavaScript</title> 
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <style> 
+        * {transition: all linear .3s;} 
+    </style> 
+</head> 
+ 
+<body> 
+    <div class="w-[540px] whitespace-nowrap overflow-hidden"> 
+        <ul id="carousel" class="*:inline-block *:p-2"> 
+            <li><img src="./img/01.jpeg" class="block rounded-full w-40 h-40 object-cover"></li> 
+            <li><img src="./img/02.webp" class="block rounded-full w-40 h-40 object-cover"></li> 
+            <li><img src="./img/03.jpeg" class="block rounded-full w-40 h-40 object-cover"></li> 
+            <li><img src="./img/04.jpeg" class="block rounded-full w-40 h-40 object-cover"></li> 
+            <li><img src="./img/05.jpeg" class="block rounded-full w-40 h-40 object-cover"></li> 
+        </ul> 
+    </div> 
+    <div class="flex gap-4 *:bg-teal-600 *:p-2 *:rounded-full *:text-teal-100 relative">
+        <button onclick="prew()" class="absolute top-[-100px]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+        </button> <button onclick="nuxt()" class="absolute right-5 top-[-100px]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        </button>
+    </div>
+    <script> 
+        let carousel = document.getElementById('carousel') 
+        let currentSlide = 0 
+        const slideWidth = 160 
+ 
+        function nuxt() { 
+            currentSlide = (currentSlide + 1) % carousel.children.length 
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)` 
+        } 
+ 
+        function prew() { 
+            currentSlide = (currentSlide - 1 + carousel.children.length) % carousel.children.length 
+            carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)` 
+        } 
+ 
+    </script> 
+</body> 
+ 
+</html>
